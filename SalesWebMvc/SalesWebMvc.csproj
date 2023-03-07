@@ -6,4 +6,39 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="Views\Departments\**" />
+    <Content Remove="Views\Departments\**" />
+    <EmbeddedResource Remove="Views\Departments\**" />
+    <None Remove="Views\Departments\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.14" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.3">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.12" />
+    <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="7.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Views\Departments\Create.cshtml">
+      <Generator>MSBuild:Compile</Generator>
+    </Content>
+    <Content Include="Views\Departments\Delete.cshtml">
+      <Generator>MSBuild:Compile</Generator>
+    </Content>
+    <Content Include="Views\Departments\Details.cshtml">
+      <Generator>MSBuild:Compile</Generator>
+    </Content>
+    <Content Include="Views\Departments\Edit.cshtml">
+      <Generator>MSBuild:Compile</Generator>
+    </Content>
+    <Content Include="Views\Departments\Index.cshtml">
+      <Generator>MSBuild:Compile</Generator>
+    </Content>
+  </ItemGroup>
+
 </Project>
