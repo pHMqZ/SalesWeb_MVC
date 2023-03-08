@@ -1,6 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Localization;
 using SalesWebMvc.Data;
 using SalesWebMvc.Services;
+using System.Globalization;
+
 
 var builder =  WebApplication.CreateBuilder(args);
 
@@ -12,6 +15,7 @@ options.UseMySql(builder.Configuration.GetConnectionString("SalesWebMvcContext")
 builder.Services.AddScoped<SeedingService>();
 builder.Services.AddScoped<SellerService>();
 builder.Services.AddScoped<DepartmentService>();
+builder.Services.AddScoped<SalesRecordService>();
 
 
 // Add services to the container.
@@ -27,6 +31,15 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
+var enUS = new CultureInfo("en-US");
+var localizationOptions = new RequestLocalizationOptions
+{
+    DefaultRequestCulture = new RequestCulture(enUS),
+    SupportedCultures = new List<CultureInfo> { enUS },
+    SupportedUICultures = new List<CultureInfo> { enUS }
+};
+
+app.UseRequestLocalization(localizationOptions);
 
 app.Services.CreateScope().ServiceProvider.GetRequiredService<SeedingService>().Seed();
 app.UseHttpsRedirection();
